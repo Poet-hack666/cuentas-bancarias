@@ -15,16 +15,35 @@ package edu.tallerweb.cuentas;
  * retirar $ 200 (con un descubierto de $ 150), podremos hacerlo.
  * Pasaremos a deberle al banco $ 105 en total: los $ 100 que
  * nos cubrió, más el 5% adicional sobre el descubierto otorgado.
+ * 
+ * 
+ * 
  */
+
+
+
+
+
+
+
 public class CuentaCorriente {
 
 	/**
 	 * Toda cuenta corriente se inicia con un límite total
 	 * para el descubierto.
 	 * @param descubiertoTotal
+	 * 
+	 *
 	 */
+	
+	private Double monto=0.0;
+	private Double descubiertoTotal;
+	private Double diferenciaMonto;
+	
+	
 	public CuentaCorriente(final Double descubiertoTotal) {
-		throw new RuntimeException("No implementado aún");
+		this.descubiertoTotal=descubiertoTotal;
+	
 	}
 	
 	/**
@@ -34,7 +53,10 @@ public class CuentaCorriente {
 	 * @param monto a depositar
 	 */
 	public void depositar(final Double monto) {
-		throw new RuntimeException("No implementado aún");
+
+		
+		this.monto+=monto;
+		
 	}
 
 	/**
@@ -45,7 +67,36 @@ public class CuentaCorriente {
 	 * @param monto a extraer
 	 */
 	public void extraer(final Double monto) {
-		throw new RuntimeException("No implementado aún");
+		/*throw new RuntimeException("No implementado aún");*/
+		
+		if(this.monto+this.descubiertoTotal<monto)
+		{
+			
+			throw new CuentaBancariaException("No se puede extraer mas dinero");
+			
+		}
+		
+		if(this.monto<monto)
+		{
+			this.diferenciaMonto=monto-this.monto;
+			
+			this.monto=monto-this.diferenciaMonto;
+			this.descubiertoTotal-=this.diferenciaMonto+(this.diferenciaMonto*0.05);
+			
+		}else
+		{
+			
+			
+			this.monto-=monto;
+			
+		}
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	/**
@@ -53,7 +104,10 @@ public class CuentaCorriente {
 	 * @return el saldo de la cuenta
 	 */
 	public Double getSaldo() {
-		throw new RuntimeException("No implementado aún");
+	/*	throw new RuntimeException("No implementado aún");*/
+		
+		return this.monto;
+		
 	}
 	
 	/**
@@ -61,7 +115,12 @@ public class CuentaCorriente {
 	 * @return el descubierto de la cuenta
 	 */
 	public Double getDescubierto() {
-		throw new RuntimeException("No implementado aún");
+		return this.descubiertoTotal;
+	/*	throw new RuntimeException("No implementado aún");*/
+		
+		
+		
+		
 	}
 
 }

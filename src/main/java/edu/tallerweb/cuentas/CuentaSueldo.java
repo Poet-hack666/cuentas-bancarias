@@ -12,8 +12,16 @@ public class CuentaSueldo {
 	 * No hay reglas adicionales para el depósito
 	 * @param monto a depositar
 	 */
+	public Double monto;
+
+	
 	public void depositar(final Double monto) {
-		throw new RuntimeException("No implementado aún");
+		/*throw new RuntimeException("No implementado aún");*/
+		
+		
+		this.monto=monto;
+		
+		
 	}
 
 	/**
@@ -21,7 +29,18 @@ public class CuentaSueldo {
 	 * @param monto a extraer
 	 */
 	public void extraer(final Double monto) {
-		throw new RuntimeException("No implementado aún");
+
+		if (this.monto < monto) {
+			throw new CuentaBancariaException("Algo");
+			
+		}
+		
+		
+		
+	this.monto=this.monto-monto;
+	
+	
+	
 	}
 
 	/**
@@ -29,7 +48,11 @@ public class CuentaSueldo {
 	 * @return el saldo de la cuenta
 	 */
 	public Double getSaldo() {
-		throw new RuntimeException("No implementado aún");
+	//	throw new RuntimeException("No implementado aún");
+	
+	return monto;
+	
+	
 	}
 
 }
