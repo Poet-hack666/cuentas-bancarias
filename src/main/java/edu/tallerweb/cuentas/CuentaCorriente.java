@@ -38,12 +38,13 @@ public class CuentaCorriente {
 	
 	private Double monto=0.0;
 	private Double descubiertoTotal;
+	private Double descubiertoFijo;
 	private Double diferenciaMonto;
 	
 	
 	public CuentaCorriente(final Double descubiertoTotal) {
 		this.descubiertoTotal=descubiertoTotal;
-	
+		this.descubiertoFijo=descubiertoTotal;
 	}
 	
 	/**
@@ -56,7 +57,15 @@ public class CuentaCorriente {
 
 		
 		this.monto+=monto;
-		
+		if(this.descubiertoTotal<this.descubiertoFijo)
+		{
+			
+			
+			
+			
+		}
+	
+	
 	}
 
 	/**
@@ -69,10 +78,10 @@ public class CuentaCorriente {
 	public void extraer(final Double monto) {
 		/*throw new RuntimeException("No implementado aún");*/
 		
-		if(this.monto+this.descubiertoTotal<monto)
+		if(this.monto+this.descubiertoTotal==0)
 		{
 			
-			throw new CuentaBancariaException("No se puede extraer mas dinero");
+			throw new CuentaBancariaException("No se puede extraer dinero si no existe en el saldo");
 			
 		}
 		

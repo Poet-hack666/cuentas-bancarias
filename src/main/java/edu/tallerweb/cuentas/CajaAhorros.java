@@ -12,7 +12,7 @@ public class CajaAhorros {
 	 * @param monto a depositar
 	 */
 	
-	private Double monto;
+	private Double monto=0.0;
 	private Integer cant_extracciones=0;
 
 	
@@ -23,10 +23,10 @@ public class CajaAhorros {
 	
 	
 	public void depositar(final Double monto) {
-		//throw new RuntimeException("No implementado aún");
+		
 	
 
-	this.monto=monto;
+	this.monto=this.monto+monto;
 	
 	
 	
@@ -40,28 +40,21 @@ public class CajaAhorros {
 	public void extraer(final Double monto) {
 		//throw new RuntimeException("No implementado aún");
 		
-		if (this.monto < monto) {
+		if (this.monto < monto || this.monto==0) {
 			throw new CuentaBancariaException("No se puede extraer dinero si no existe en el saldo");
 			
 		}
+		this.cant_extracciones++;
 		
 		
-	
-	
-		
-		
-	
-		
-		
-		
-	if(this.cant_extracciones<=5)
+	if(this.cant_extracciones>5)
 	{
-	this.monto=this.monto-monto;
-	this.cant_extracciones=this.cant_extracciones+1;
+	this.monto=this.monto-monto-6.0;
+	
 	}
 	else
 	{
-	this.monto=(this.monto-monto)-6.0;	
+	this.monto-=monto;	
 	
 		
 		
