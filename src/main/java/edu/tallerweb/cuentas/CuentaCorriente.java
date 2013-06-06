@@ -37,7 +37,6 @@ public class CuentaCorriente {
 	private Double descubiertoFijo=0.0;
 	private Double diferenciaMonto=0.0;
 	private Double descubiertoDeuda=0.0;
-	//private Double restoDeudaMonto;
 	private Double descubiertoPorcentaje=0.0;
 	private double descubiertoDeuda1;
 	private double diferenciaMonto1;
@@ -71,8 +70,10 @@ public class CuentaCorriente {
 		}
 		else
 		{
+			if(this.descubiertoFijo!=this.descubiertoTotal)
+			{
 			this.descubiertoDeuda=this.descubiertoFijo-this.descubiertoTotal;
-			if(monto>this.descubiertoDeuda1)
+			if(monto>this.descubiertoDeuda)
 			{
 				this.descubiertoTotal=this.descubiertoFijo;
 				this.diferenciaMonto1=monto-this.descubiertoDeuda;
@@ -80,10 +81,15 @@ public class CuentaCorriente {
 				
 			}
 			
+			else{
+				
+				this.descubiertoTotal+=monto;
+				
+			}	
 			
 		}
 		
-		
+		}
 		
 		
 		
@@ -158,22 +164,32 @@ public class CuentaCorriente {
 		
 		
 		
-	 if(monto>this.saldo && this.descubiertoFijo==this.descubiertoTotal)
+	 if( this.monto<saldo)
 		{
-		 this.descubiertoDeuda=monto-this.saldo;
-		 this.descubiertoPorcentaje=(monto/100)*5;
-		 this.diferenciaMonto=monto-this.descubiertoDeuda;
-		 this.descubiertoTotal=this.descubiertoTotal-(this.descubiertoDeuda+this.descubiertoPorcentaje);	
-		this.saldo=0.0;
-		
-		}
-	 else
-	   { 
+		 
 		 this.saldo=this.saldo-monto;
 		 
+		
+		
+		}
+	 else if(monto>this.saldo)
+	 {
+		 this.descubiertoDeuda=monto-this.saldo;
+		 this.descubiertoPorcentaje=(this.descubiertoDeuda/100)*5;
+		 this.diferenciaMonto=monto-this.descubiertoDeuda;
+		 this.descubiertoTotal=this.descubiertoTotal-(this.descubiertoDeuda+this.descubiertoPorcentaje);	
+		
 		 
 		 
-	   }
+	 }
+	 
+		 
+	 
+		
+		 
+		 
+		 
+	 
 		 
 		 
 		 
@@ -189,6 +205,12 @@ public class CuentaCorriente {
 	 */
 	public Double getSaldo() {
 	/*	throw new RuntimeException("No implementado aún");*/
+		
+		if(this.saldo<0)
+		{
+		this.saldo=0.0;	
+			
+		}
 		
 		return this.saldo;
 		

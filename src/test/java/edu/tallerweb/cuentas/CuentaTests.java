@@ -108,9 +108,10 @@ CuentaCorriente cuenta=new CuentaCorriente(500.0);
 public void quePuedaDepositarEnElDescubierto()
 {
 	CuentaCorriente cuenta=new CuentaCorriente(100.0);
+	
 	cuenta.extraer(10.0);
-	cuenta.depositar(1.0);
-	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",99.5,cuenta.getSaldo(),0.0);
+	cuenta.depositar(10.0);
+	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",99.5,cuenta.getDescubierto(),0.0);
 
 }
 
