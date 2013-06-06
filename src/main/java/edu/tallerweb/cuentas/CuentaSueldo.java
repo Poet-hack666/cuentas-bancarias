@@ -36,10 +36,9 @@ public class CuentaSueldo {
 			throw new CuentaBancariaException("No se puede extraer saldo negativo");
 			
 		}
-		else
-		{
+		
 			this.monto=this.monto-monto;
-		}
+		
 	
 	
 	}

@@ -24,7 +24,15 @@ public class CajaAhorros {
 	
 	public void depositar(final Double monto) {
 		
-	
+		
+		if(monto<0)
+		{
+			throw new CuentaBancariaException("No se puede depositar saldo negativo");
+			
+			
+		}
+		
+		
 
 	this.monto=this.monto+monto;
 	
@@ -38,12 +46,13 @@ public class CajaAhorros {
 	 * @param monto a extraer
 	 */
 	public void extraer(final Double monto) {
-		//throw new RuntimeException("No implementado aún");
 		
-		if (this.monto < monto || this.monto==0) {
+		
+		if (this.monto < monto ) {
 			throw new CuentaBancariaException("No se puede extraer dinero si no existe en el saldo");
 			
 		}
+		
 		this.cant_extracciones++;
 		
 		
