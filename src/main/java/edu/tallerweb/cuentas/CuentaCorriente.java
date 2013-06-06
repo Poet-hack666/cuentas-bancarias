@@ -21,11 +21,6 @@ package edu.tallerweb.cuentas;
  */
 
 
-
-
-
-
-
 public class CuentaCorriente {
 
 	/**
@@ -37,10 +32,14 @@ public class CuentaCorriente {
 	 */
 	
 	private Double monto=0.0;
-	private Double descubiertoTotal;
-	private Double descubiertoFijo;
-	private Double diferenciaMonto;
-	
+	private Double descubiertoTotal=0.0;
+	private Double descubiertoFijo=0.0;
+	private Double diferenciaMonto=0.0;
+	private Double descubiertoDeuda=0.0;
+	private Double restoDeudaMonto;
+	private Double descubiertoPorcentaje=0.0;
+	private double descubiertoDeuda1;
+	private double descubiertoMonto1;
 	
 	public CuentaCorriente(final Double descubiertoTotal) {
 		this.descubiertoTotal=descubiertoTotal;
@@ -56,18 +55,25 @@ public class CuentaCorriente {
 	public void depositar(final Double monto) {
 
 		
-		this.monto+=monto;
-		if(this.descubiertoTotal<this.descubiertoFijo)
+		
+	
+		if (this.descubiertoTotal<this.descubiertoFijo && this.monto<monto)
 		{
-			
-			
-			
-			
+			this.descubiertoMonto1=monto-this.monto;
+			this.descubiertoDeuda1=this.descubiertoMonto1-this.descubiertoMonto1;
+			this.descubiertoTotal=this.descubiertoTotal+this.descubiertoDeuda1;
+			this.monto=this.monto+this.descubiertoMonto1;
 		}
 	
-	
-	}
-
+		
+	else
+		{
+		this.monto+=monto;
+		}	
+		}
+		
+		
+		
 	/**
 	 * Se cobrará el 5% de comisión sobre el monto girado
 	 * en descubierto.
@@ -76,38 +82,30 @@ public class CuentaCorriente {
 	 * @param monto a extraer
 	 */
 	public void extraer(final Double monto) {
-		/*throw new RuntimeException("No implementado aún");*/
-		
-		if(this.monto+this.descubiertoTotal==0)
+	
+	 if(monto>this.monto && this.descubiertoFijo==this.descubiertoTotal)
 		{
-			
-			throw new CuentaBancariaException("No se puede extraer dinero si no existe en el saldo");
-			
+		 this.descubiertoDeuda=monto-this.monto;
+		 this.descubiertoPorcentaje=(this.descubiertoFijo/100)*5;
+		 this.diferenciaMonto=monto-this.descubiertoDeuda;
+		 this.descubiertoTotal=this.descubiertoTotal-(this.descubiertoDeuda+this.descubiertoPorcentaje);	
 		}
-		
-		if(this.monto<monto)
-		{
-			this.diferenciaMonto=monto-this.monto;
-			
-			this.monto=monto-this.diferenciaMonto;
-			this.descubiertoTotal-=this.diferenciaMonto+(this.diferenciaMonto*0.05);
-			
-		}else
-		{
-			
-			
-			this.monto-=monto;
-			
-		}
-		
-		
-		
-		
-		
-		
+	 else
+	   { 
+		 this.monto=this.monto-monto;
+		 
+		 
+		 
+	   }
+		 
+		 
+		 
+		 
 		
 	}
-
+	
+	
+	
 	/**
 	 * Permite saber el saldo de la cuenta
 	 * @return el saldo de la cuenta
@@ -125,11 +123,7 @@ public class CuentaCorriente {
 	 */
 	public Double getDescubierto() {
 		return this.descubiertoTotal;
-	/*	throw new RuntimeException("No implementado aún");*/
-		
-		
-		
-		
+	/*	throw new RuntimeException("No implementado aún");*/				
 	}
 
 }
