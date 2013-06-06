@@ -67,13 +67,6 @@ public class CuentaTests {
 	}
 
 	
-		
-	
-
-	
-
-
-	
 
 
 
@@ -111,18 +104,6 @@ CuentaCorriente cuenta=new CuentaCorriente(500.0);
 
 }
 
-/*
-@Test
-
-public void queLaExtraccionNoPuedaSerIgualAlDescubierto()
-{
-	CuentaCorriente cuenta=new CuentaCorriente(50.0);
-	cuenta.extraer(50.0);
-	cuenta.depositar(50.0);
-	Assert.assertEquals("si tengo 50 solo en descubierto y quito 50,y luego deposito 50,mi descubierto es de 50",50.0,cuenta.getDescubierto(),0.0);
-
-}
-*/
 
 
 
@@ -138,19 +119,15 @@ public void quePuedaDepositarEnElDescubierto()
 }
 
 
-/*
-@Test
 
-public void queSiDepositoLuegoDeRetirarDineroDelDescubiertoSeSumeAlDescubiertoYalSaldo(){
-	
-CuentaCorriente cuenta=new CuentaCorriente(50.0);//tengo 50 de descubierto
-	cuenta.depositar(50.0);//deposito y tengo 50 de saldo 50+50=100
-	cuenta.extraer(100.0);//extraigo 100 y se deberia sacar 50 de descubierto y 50 de saldo
-	cuenta.depositar(100.0);//si deposito 100 tendre nuevamente 50 en saldo y 50 en descubierto
-	Assert.assertEquals("si deposito 100 luego de extraer 100 obtengo 50 de saldo ",50.0,cuenta.getSaldo(),0.0);
-	Assert.assertEquals("si deposito 100 luego de extraer 100 obtengo 50 de descubierto",50.0,cuenta.getDescubierto(),0.0);
+@Test(expected=CuentaBancariaException.class)
+public void queNoSePuedeExtraerCantidadNegativaEnUnaCuentaCorriente()
+{
+	CuentaCorriente cuenta=new CuentaCorriente(100.0);
+	cuenta.extraer(100.0);
+
 }
-*/
+
 
 
 
@@ -160,35 +137,6 @@ CuentaCorriente cuenta=new CuentaCorriente(50.0);//tengo 50 de descubierto
 
 }
 
-
-/*
-@Test
-
-public void queSiRetiroDeCuentaCorrienteMasDeMisaldoSeResteDelDescubierto(){
-	
-CuentaCorriente cuenta=new CuentaCorriente(100.0);
-	cuenta.depositar(100.0);
-	cuenta.extraer(150.0);
-
-	
-	Assert.assertEquals("si   quito 150 obtendre  de descubierto ",47.5,cuenta.getDescubierto(),0.0);
-Assert.assertEquals("si quito 150 obtendre 0 de saldo", 0.0,cuenta.getSaldo(),0.0);
-	
-}
-
-
-
-
-@Test (expected=CuentaBancariaException.class)
-public void queNoSePuedaRetirarDineroSiNoHayDineroDescubiertoOsaldo(){
-	
-CuentaCorriente cuenta=new CuentaCorriente(0.0);
-
-	cuenta.extraer(400.0);
-	
-}
-
-*/
 
 
 

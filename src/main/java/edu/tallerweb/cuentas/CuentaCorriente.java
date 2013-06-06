@@ -83,6 +83,17 @@ public class CuentaCorriente {
 	 */
 	public void extraer(final Double monto) {
 	
+		
+		if(this.descubiertoTotal<=monto && (this.monto<monto || this.monto==0))
+		{
+			
+			throw new CuentaBancariaException("No se puede extraer dinero negativo");
+		}
+		
+		
+		
+		
+		
 	 if(monto>this.monto && this.descubiertoFijo==this.descubiertoTotal)
 		{
 		 this.descubiertoDeuda=monto-this.monto;
