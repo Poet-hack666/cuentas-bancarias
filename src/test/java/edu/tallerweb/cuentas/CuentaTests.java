@@ -109,20 +109,13 @@ public void quePuedaDepositarEnElDescubierto()
 {
 	CuentaCorriente cuenta=new CuentaCorriente(100.0);
 	cuenta.extraer(10.0);
-	cuenta.depositar(10.0);
-	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",85.0,cuenta.getDescubierto(),0.0);
+	cuenta.depositar(80.0);
+	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",95.0,cuenta.getDescubierto(),0.0);
 
 }
 
 
 
-@Test(expected=CuentaBancariaException.class)
-public void queNoSePuedeExtraerCantidadNegativaEnUnaCuentaCorriente()
-{
-	CuentaCorriente cuenta=new CuentaCorriente(100.0);
-	cuenta.extraer(100.0);
-
-}
 
 
 

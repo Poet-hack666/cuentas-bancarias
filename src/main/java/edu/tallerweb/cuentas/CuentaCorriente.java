@@ -32,15 +32,16 @@ public class CuentaCorriente {
 	 */
 	
 	private Double monto=0.0;
+	private Double saldo=0.0;
 	private Double descubiertoTotal=0.0;
 	private Double descubiertoFijo=0.0;
 	private Double diferenciaMonto=0.0;
 	private Double descubiertoDeuda=0.0;
-	private Double restoDeudaMonto;
+	//private Double restoDeudaMonto;
 	private Double descubiertoPorcentaje=0.0;
 	private double descubiertoDeuda1;
-	private double descubiertoMonto1;
-	
+	private double diferenciaMonto1;
+	private double deuda;
 	public CuentaCorriente(final Double descubiertoTotal) {
 		this.descubiertoTotal=descubiertoTotal;
 		this.descubiertoFijo=descubiertoTotal;
@@ -55,23 +56,45 @@ public class CuentaCorriente {
 	public void depositar(final Double monto) {
 
 		
-		
-	
-		if (this.descubiertoTotal<this.descubiertoFijo && this.monto<monto)
+		if(monto>0.00)
 		{
-			this.descubiertoMonto1=monto-this.monto;
-			this.descubiertoDeuda1=this.descubiertoMonto1-this.descubiertoMonto1;
-			this.descubiertoTotal=this.descubiertoTotal+this.descubiertoDeuda1;
-			this.monto=this.monto+this.descubiertoMonto1;
-		}
-	
+			
+		    if(this.descubiertoTotal==this.descubiertoFijo)
+		    {
+		    	
+		    this.saldo+=monto;	
+		    	
+		    	
+		    }  
+		    else
+		    {
+		    	if(monto>this.deuda)
+		    	{
+		    	 this.descubiertoTotal+=this.deuda;
+		    		this.saldo += monto - this.deuda;
+					this.deuda = 0.0; }
+				else {
+					this.descubiertoTotal += monto; }
+			
+
 		
-	else
+		    		
+		    		
+		    	}
+		
+				
+		}
+		
+		else
 		{
-		this.monto+=monto;
-		}	
+			
+			throw new CuentaBancariaException("No se puede depositar saldo negativo");	
 		}
-		
+			
+	}	
+			
+			
+
 		
 		
 	/**
@@ -84,7 +107,7 @@ public class CuentaCorriente {
 	public void extraer(final Double monto) {
 	
 		
-		if(this.descubiertoTotal<=monto && (this.monto<monto || this.monto==0))
+		if(this.descubiertoTotal<=monto && (this.saldo<monto || this.saldo==0))
 		{
 			
 			throw new CuentaBancariaException("No se puede extraer dinero negativo");
@@ -94,16 +117,16 @@ public class CuentaCorriente {
 		
 		
 		
-	 if(monto>this.monto && this.descubiertoFijo==this.descubiertoTotal)
+	 if(monto>this.saldo && this.descubiertoFijo==this.descubiertoTotal)
 		{
-		 this.descubiertoDeuda=monto-this.monto;
+		 this.descubiertoDeuda=monto-this.saldo;
 		 this.descubiertoPorcentaje=(this.descubiertoFijo/100)*5;
 		 this.diferenciaMonto=monto-this.descubiertoDeuda;
 		 this.descubiertoTotal=this.descubiertoTotal-(this.descubiertoDeuda+this.descubiertoPorcentaje);	
 		}
 	 else
 	   { 
-		 this.monto=this.monto-monto;
+		 this.saldo=this.saldo-monto;
 		 
 		 
 		 
@@ -124,7 +147,7 @@ public class CuentaCorriente {
 	public Double getSaldo() {
 	/*	throw new RuntimeException("No implementado aún");*/
 		
-		return this.monto;
+		return this.saldo;
 		
 	}
 	
