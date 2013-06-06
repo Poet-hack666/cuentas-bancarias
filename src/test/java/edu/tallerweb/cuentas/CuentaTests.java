@@ -3,7 +3,7 @@ package edu.tallerweb.cuentas;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CuentaTests {
+public class CuentaTests extends AbstractCuenta{
 
 	@Test
 	public void queVerifiqueLaConsigna() {
@@ -110,9 +110,23 @@ public void quePuedaDepositarEnElDescubierto()
 	CuentaCorriente cuenta=new CuentaCorriente(100.0);
 	
 	cuenta.extraer(10.0);
-	cuenta.depositar(10.0);
+	cuenta.depositar(5.0);
 	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",99.5,cuenta.getDescubierto(),0.0);
 
+}
+
+
+@Override
+public void depositar(Double monto) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+@Override
+public void extraer(Double monto) {
+	// TODO Auto-generated method stub
+	
 }
 
 

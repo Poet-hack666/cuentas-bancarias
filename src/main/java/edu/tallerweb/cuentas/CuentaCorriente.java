@@ -21,7 +21,7 @@ package edu.tallerweb.cuentas;
  */
 
 
-public class CuentaCorriente {
+public class CuentaCorriente extends AbstractCuenta {
 
 	/**
 	 * Toda cuenta corriente se inicia con un límite total

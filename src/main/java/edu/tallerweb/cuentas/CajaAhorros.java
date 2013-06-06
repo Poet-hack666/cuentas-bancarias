@@ -5,7 +5,7 @@ package edu.tallerweb.cuentas;
  * quinta extracción de dinero se cobre un costo adicional
  * por extracción de $ 6
  */
-public class CajaAhorros {
+public class CajaAhorros extends AbstractCuenta{
 
 	/**
 	 * No hay reglas adicionales para el depósito
