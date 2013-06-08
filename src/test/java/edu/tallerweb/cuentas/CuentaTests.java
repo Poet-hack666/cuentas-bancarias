@@ -78,7 +78,7 @@ public void quePuedaDepositarEnLaCuentaCorriente(){
 	
 CuentaCorriente cuenta=new CuentaCorriente(500.0);
 	cuenta.depositar(200.0);
-	Assert.assertEquals("si  deposito  200 pesos,obtendre 200 de saldo ",200.0,cuenta.getMonto(),0.0);
+	Assert.assertEquals("si  deposito  200 pesos,obtendre 200 de saldo ",200.0,cuenta.getSaldo(),0.0);
 
 }
 
@@ -99,7 +99,7 @@ public void quePuedaRetirarDinero(){
 CuentaCorriente cuenta=new CuentaCorriente(500.0);
 	cuenta.depositar(200.0);
 	cuenta.extraer(100.0);
-	Assert.assertEquals("si  deposito  200 pesos,y quito 100 obtendre 100 de saldo ",100.0,cuenta.getMonto(),0.0);
+	Assert.assertEquals("si  deposito  200 pesos,y quito 100 obtendre 100 de saldo ",100.0,cuenta.getSaldo(),0.0);
 
 }
 

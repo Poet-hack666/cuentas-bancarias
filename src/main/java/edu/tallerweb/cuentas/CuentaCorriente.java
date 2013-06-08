@@ -134,7 +134,7 @@ public class CuentaCorriente extends AbstractCuenta {
 	 * Permite saber el saldo de la cuenta
 	 * @return el saldo de la cuenta
 	 */
-	public Double getMonto() {
+	public Double getSaldo() {
 	/*	throw new RuntimeException("No implementado aún");*/
 		
 		return this.monto;
