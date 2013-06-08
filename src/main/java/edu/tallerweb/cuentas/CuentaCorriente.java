@@ -31,16 +31,13 @@ public class CuentaCorriente extends AbstractCuenta {
 	 *
 	 */
 	
-	private Double monto=0.0;
-	private Double saldo=0.0;
+	public Double monto=0.0;
 	private Double descubiertoTotal=0.0;
 	private Double descubiertoFijo=0.0;
-	private Double diferenciaMonto=0.0;
-	private Double descubiertoDeuda=0.0;
-	private Double descubiertoPorcentaje=0.0;
-	private double descubiertoDeuda1;
-	private double diferenciaMonto1;
-	private double deuda;
+	private Double diferenciaDescubierto=0.0;
+	private Double diferenciaMonto;
+	private Double adicional=0.05;
+	private Double deuda;
 	public CuentaCorriente(final Double descubiertoTotal) {
 		this.descubiertoTotal=descubiertoTotal;
 		this.descubiertoFijo=descubiertoTotal;
@@ -54,94 +51,39 @@ public class CuentaCorriente extends AbstractCuenta {
 	 */
 	public void depositar(final Double monto) {
 
-		if(monto<0.0)
-		{
-			
-			throw new CuentaBancariaException("No se puede extraer dinero negativo");
-			
-		}
 		
+ if(this.descubiertoTotal==this.descubiertoFijo)
+  {	
+	if(monto<0.0)
+	{
+		throw new CuentaBancariaException("No se puede depositar monto negativo");
 		
-		if(this.descubiertoFijo==this.descubiertoTotal)
-		{
-			this.saldo+=monto;
-						
-			
-		}
-		else
-		{
-			if(this.descubiertoFijo!=this.descubiertoTotal)
-			{
-			this.descubiertoDeuda=this.descubiertoFijo-this.descubiertoTotal;
-			if(monto>this.descubiertoDeuda)
-			{
-				this.descubiertoTotal=this.descubiertoFijo;
-				this.diferenciaMonto1=monto-this.descubiertoDeuda;
-				this.saldo+=this.diferenciaMonto1;
-				
-			}
-			
-			else{
-				
-				this.descubiertoTotal+=monto;
-				
-			}	
-			
-		}
+	}
+	else
+	{
 		
-		}
+	this.monto+=monto;	
+	
+	}
 		
 		
 		
+  }	
+ else
+ {
+	if(this.descubiertoTotal<monto) 
+	{
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		if(monto>0.00)
-		{
-			
-		    if(this.descubiertoTotal==this.descubiertoFijo)
-		    {
-		    	
-		    this.saldo+=monto;	
-		    	
-		    	
-		    }  
-		    else
-		    {
-		    	if(monto>this.deuda)
-		    	{
-		    	 this.descubiertoTotal+=this.deuda;
-		    		this.saldo += monto - this.deuda;
-					this.deuda = 0.0; }
-				else {
-					this.descubiertoTotal += monto; }
-			
+	this.diferenciaDescubierto=this.descubiertoFijo-this.descubiertoTotal;
+	this.descubiertoTotal=this.descubiertoFijo;
+	this.monto=monto-this.diferenciaDescubierto;
 
-		
-		    		
-		    		
-		    	}
-		
-				
-		}
-		
-		else
-		{
+	}
+	 
+	 
+ }
 			
-			throw new CuentaBancariaException("No se puede depositar saldo negativo");	
-		}
-		*/	
-	}	
-			
-			
-
+}
 		
 		
 	/**
@@ -152,49 +94,122 @@ public class CuentaCorriente extends AbstractCuenta {
 	 * @param monto a extraer
 	 */
 	public void extraer(final Double monto) {
-	
 		
-		if(monto<0.0)
+		
+		if(monto<=0.0)
 		{
 			
-			throw new CuentaBancariaException("No se puede extraer dinero negativo");
+		throw new  CuentaBancariaException("no se puede restar en negativo");	
+			
 		}
 		
 		
-		
-		
-		
-	 if( this.monto<saldo)
+		if(this.monto+this.descubiertoTotal<monto)
 		{
-		 
-		 this.saldo=this.saldo-monto;
-		 
-		
-		
+			throw new  CuentaBancariaException("no se puede restar en negativo");	
 		}
-	 else if(monto>this.saldo)
-	 {
-		 this.descubiertoDeuda=monto-this.saldo;
-		 this.descubiertoPorcentaje=(this.descubiertoDeuda/100)*5;
-		 this.diferenciaMonto=monto-this.descubiertoDeuda;
-		 this.descubiertoTotal=this.descubiertoTotal-(this.descubiertoDeuda+this.descubiertoPorcentaje);	
 		
-		 
-		 
-	 }
-	 
-		 
-	 
 		
-		 
-		 
-		 
-	 
-		 
-		 
-		 
-		 
 		
+		
+		if(this.monto>monto)
+		{
+			this.monto-=monto;
+			
+		}
+		
+		else
+		{
+		this.diferenciaMonto=monto-this.monto;
+		this.monto=0.0;
+		this.descubiertoTotal-=this.diferenciaMonto*this.adicional;
+			
+			
+			}/*	
+				this.diferenciaMonto=monto-this.monto;
+				this.monto=0.0;
+				this.deuda+=this.deuda*this.adicional;
+				if(this.deuda>this.descubiertoTotal)
+				{
+					
+					throw new CuentaBancariaException("No hay suficiente saldo para la extraccion"); 
+				}
+			else 
+			{
+				this.descubiertoTotal-=this.diferenciaMonto;	
+			}	
+	}
+			
+			
+		*/
+		
+			
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*codigo original
+		if(descubiertoTotal==descubiertoFijo)
+		{
+			if(monto<=0.0 )
+			{
+			
+			
+			throw new CuentaBancariaException("No se puede extraer monto negativo o 0");
+			
+			
+			}	
+			else
+			{
+				if(monto>this.monto)
+				{
+					this.diferenciaMonto=monto-this.monto;
+					this.monto=0.0;
+					this.descubiertoTotal-=this.diferenciaMonto;
+				}
+			
+			}
+
+		}
+		else
+		{
+			
+			if(monto<=0.0 )
+			{
+			
+			throw new CuentaBancariaException("No se puede extraer monto negativo");
+		
+			}
+			else
+			{
+					if(monto<this.descubiertoTotal)
+					{
+						
+						this.descubiertoTotal-=monto;
+					
+					}
+					else
+					{
+						throw new CuentaBancariaException ("no se puede extraer si el monto es mayor al descubierto");
+									
+					}		
+			}
+		}
+		 
+		*/
 	}
 	
 	
@@ -203,16 +218,10 @@ public class CuentaCorriente extends AbstractCuenta {
 	 * Permite saber el saldo de la cuenta
 	 * @return el saldo de la cuenta
 	 */
-	public Double getSaldo() {
+	public Double getMonto() {
 	/*	throw new RuntimeException("No implementado aún");*/
 		
-		if(this.saldo<0)
-		{
-		this.saldo=0.0;	
-			
-		}
-		
-		return this.saldo;
+		return this.monto;
 		
 	}
 	
@@ -220,7 +229,7 @@ public class CuentaCorriente extends AbstractCuenta {
 	 * Permite saber el saldo en descubierto
 	 * @return el descubierto de la cuenta
 	 */
-	public Double getDescubierto() {
+	public double getDescubierto() {
 		return this.descubiertoTotal;
 	/*	throw new RuntimeException("No implementado aún");*/				
 	}

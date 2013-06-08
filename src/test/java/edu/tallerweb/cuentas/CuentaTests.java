@@ -3,7 +3,7 @@ package edu.tallerweb.cuentas;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CuentaTests extends AbstractCuenta{
+public class CuentaTests {
 
 	@Test
 	public void queVerifiqueLaConsigna() {
@@ -73,7 +73,16 @@ public void quePuedaDepositarEnLaCuentaCorriente(){
 	
 CuentaCorriente cuenta=new CuentaCorriente(500.0);
 	cuenta.depositar(200.0);
-	Assert.assertEquals("si  deposito  200 pesos,obtendre 200 de saldo ",200.0,cuenta.getSaldo(),0.0);
+	Assert.assertEquals("si  deposito  200 pesos,obtendre 200 de saldo ",200.0,cuenta.getMonto(),0.0);
+
+}
+
+@Test
+public void queElDescubiertoSeaElQueSeLeAsigno(){
+	
+CuentaCorriente cuenta=new CuentaCorriente(500.0);
+	
+	Assert.assertEquals("si  deposito  200 pesos,obtendre 200 de saldo ",500.0,cuenta.getDescubierto(),0.0);
 
 }
 
@@ -85,7 +94,7 @@ public void quePuedaRetirarDinero(){
 CuentaCorriente cuenta=new CuentaCorriente(500.0);
 	cuenta.depositar(200.0);
 	cuenta.extraer(100.0);
-	Assert.assertEquals("si  deposito  200 pesos,y quito 100 obtendre 100 de saldo ",100.0,cuenta.getSaldo(),0.0);
+	Assert.assertEquals("si  deposito  200 pesos,y quito 100 obtendre 100 de saldo ",100.0,cuenta.getMonto(),0.0);
 
 }
 
@@ -95,8 +104,10 @@ public void quePuedaRetirarDineroDescubierto(){
 	
 CuentaCorriente cuenta=new CuentaCorriente(500.0);
 	
-	cuenta.extraer(100.0);
-	Assert.assertEquals("si   quito 100 obtendre 375 de descubierto ",395.0,cuenta.getDescubierto(),0.0);
+
+	cuenta.extraer(50.0);
+
+	Assert.assertEquals("si   quito 100 obtendre 375 de descubierto ",450.0,cuenta.getDescubierto(),0.0);
 
 }
 
@@ -110,24 +121,11 @@ public void quePuedaDepositarEnElDescubierto()
 	CuentaCorriente cuenta=new CuentaCorriente(100.0);
 	
 	cuenta.extraer(10.0);
-	cuenta.depositar(5.0);
-	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",99.5,cuenta.getDescubierto(),0.0);
+
+	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",90.0,cuenta.getDescubierto(),0.0);
 
 }
 
-
-@Override
-public void depositar(Double monto) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-@Override
-public void extraer(Double monto) {
-	// TODO Auto-generated method stub
-	
-}
 
 
 

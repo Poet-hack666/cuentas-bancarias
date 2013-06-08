@@ -10,6 +10,7 @@ package edu.tallerweb.cuentas;
 public abstract class AbstractCuenta {
 
 	private Double monto;
+	private double descubiertoTotal;
 	public abstract void depositar(final Double monto);
 
 	/**
@@ -19,11 +20,16 @@ public abstract class AbstractCuenta {
 	public abstract void extraer(final Double monto);
 
 	public Double getMonto() {
-		return monto;
+		return this.monto;
+		
 	}
 
-	public void setMonto(Double monto) {
-		this.monto = monto;
+	public double getDescubierto() {
+		// TODO Auto-generated method stub
+		return this.descubiertoTotal;
 	}
+
+
+
 
 }
