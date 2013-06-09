@@ -112,7 +112,7 @@ CuentaCorriente cuenta=new CuentaCorriente(500.0);
 
 	cuenta.extraer(50.0);
 
-	Assert.assertEquals("si   quito 100 obtendre 375 de descubierto ",450.0,cuenta.getDescubierto(),0.0);
+	Assert.assertEquals("si   50 y de descubierto tengo 500  ",447.50,cuenta.getDescubierto(),0.0);
 
 }
 
@@ -127,7 +127,7 @@ public void quePuedaDepositarEnElDescubierto()
 	
 	cuenta.extraer(10.0);
 
-	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",90.0,cuenta.getDescubierto(),0.0);
+	Assert.assertEquals("si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",89.5,cuenta.getDescubierto(),0.0);
 
 }
 
