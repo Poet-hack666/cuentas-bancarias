@@ -48,7 +48,7 @@ public class CajaAhorros extends AbstractCuenta {
 					"No se puede extraer dinero si no existe en el saldo");
 
 		}
-
+		{
 		this.cant_extracciones++;
 
 		if (this.cant_extracciones > 5) {
@@ -58,7 +58,7 @@ public class CajaAhorros extends AbstractCuenta {
 			this.monto -= monto;
 
 		}
-
+		}
 	}
 
 	/**

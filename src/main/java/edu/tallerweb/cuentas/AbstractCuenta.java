@@ -13,15 +13,15 @@ public abstract class AbstractCuenta {
 	 * Agrega a la cuenta el monto determinado
 	 * 
 	 * @param monto
-	 *            a depositar
+	 * a depositar
 	 */
 	public abstract void depositar(final Double monto);
 
 	/**
-	 * Retira de la cuenta el monto determinado
+	 * Retira de la cuenta el monto determinado  a extraer
 	 * 
 	 * @param monto
-	 *            a extraer
+	 *
 	 */
 	public abstract void extraer(final Double monto);
 

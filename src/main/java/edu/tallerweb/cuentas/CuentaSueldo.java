@@ -5,7 +5,7 @@ public class CuentaSueldo extends AbstractCuenta {
 	public Double monto = 0.0;
 
 	public void CuentaSueldo(final Double monto) {
-		this.monto = monto;
+		this.monto = this.monto+monto;
 
 	}
 
