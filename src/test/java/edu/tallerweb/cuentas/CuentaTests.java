@@ -58,7 +58,7 @@ public class CuentaTests {
 
 
 		
-		cuenta.extraer(3394.0);
+		cuenta.extraer(3390.0);
 		
 		
 	}
