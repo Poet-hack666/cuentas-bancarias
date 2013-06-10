@@ -1,6 +1,6 @@
 package edu.tallerweb.cuentas;
 
-public class CuentaSueldo {
+public class CuentaSueldo extends AbstractCuenta {
 
 	public Double monto=0.0;
 
@@ -15,7 +15,7 @@ public class CuentaSueldo {
 	
 	public void depositar(final Double monto) {
 		
-		if(monto<0)
+		if(monto<0.0)
 		{
 			throw new CuentaBancariaException("No se puede depositar saldo negativo");
 			
@@ -32,6 +32,13 @@ public class CuentaSueldo {
 	
 	public void extraer(final Double monto) {
 
+		if(monto<0.0)
+		{
+			
+			throw new CuentaBancariaException("No se puede extraer saldo negativo");
+			
+		}
+		
 		if (this.monto < monto) {
 			throw new CuentaBancariaException("No se puede extraer saldo negativo");
 			

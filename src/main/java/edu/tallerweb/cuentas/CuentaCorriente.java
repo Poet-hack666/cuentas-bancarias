@@ -35,10 +35,10 @@ public class CuentaCorriente extends AbstractCuenta {
 	private Double descubiertoTotal=0.0;
 	private Double descubiertoFijo=0.0;
 	private Double diferenciaDescubierto=0.0;
-	private Double diferenciaMonto;
+	
 	private Double adicional=0.05;
 	private Double deuda;
-	private double diferencia;
+
 	
 	public CuentaCorriente(final Double descubiertoTotal) {
 		this.descubiertoTotal=descubiertoTotal;
