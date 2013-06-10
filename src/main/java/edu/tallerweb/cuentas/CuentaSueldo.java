@@ -5,7 +5,7 @@ public class CuentaSueldo extends AbstractCuenta {
 	public Double monto = 0.0;
 
 	public void CuentaSueldo(final Double monto) {
-		this.monto = this.monto+monto;
+		this.monto =monto;
 
 	}
 
@@ -15,10 +15,11 @@ public class CuentaSueldo extends AbstractCuenta {
 			throw new CuentaBancariaException(
 					"No se puede depositar saldo negativo");
 
-		}
+		}else
+		{
 
 		this.monto = this.monto + monto;
-
+		}
 	}
 
 	public void extraer(final Double monto) {
@@ -30,12 +31,12 @@ public class CuentaSueldo extends AbstractCuenta {
 
 		}
 
-		if (this.monto < monto) {
+		if (this.monto <= monto) {
 			throw new CuentaBancariaException(
 					"No se puede extraer saldo negativo");
 
 		}
-
+		
 		this.monto = this.monto - monto;
 
 	}
