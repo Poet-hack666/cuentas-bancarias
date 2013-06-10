@@ -109,10 +109,10 @@ public void quePuedaRetirarDineroDescubierto(){
 	
 CuentaCorriente cuenta=new CuentaCorriente(500.0);
 	
+	cuenta.depositar(1000.0);
+	cuenta.extraer(1100.0);
 
-	cuenta.extraer(50.0);
-
-	Assert.assertEquals("si   50 y de descubierto tengo 500  ",447.50,cuenta.getDescubierto(),0.0);
+	Assert.assertEquals("si   50 y de descubierto tengo 500  ",395.0,cuenta.getDescubierto(),0.0);
 
 }
 

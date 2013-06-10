@@ -39,6 +39,7 @@ public class CuentaCorriente extends AbstractCuenta {
 	private Double adicional=0.05;
 	private Double deuda;
 	private double diferencia;
+	
 	public CuentaCorriente(final Double descubiertoTotal) {
 		this.descubiertoTotal=descubiertoTotal;
 		this.descubiertoFijo=descubiertoTotal;
@@ -97,98 +98,34 @@ public class CuentaCorriente extends AbstractCuenta {
 	public void extraer(final Double monto) {
 		
 		
-		if(monto<=0.0)
+		
+		if (monto < 0.0)
 		{
-			
-		throw new  CuentaBancariaException("no se puede restar en negativo");	
-			
+		
+			throw new CuentaBancariaException("El monto no puede ser negativo"); 
+				
 		}
-		
-		
-		if(this.monto+this.descubiertoTotal<monto)
-		{
-			throw new  CuentaBancariaException("no se puede restar en negativo");	
-	
-		}
-	
-	
-	
-	if(this.descubiertoTotal==this.descubiertoFijo)
-	{
-	
-		if(this.monto>=monto)
-		{
+			if (this.monto + this.descubiertoTotal <= monto) {
+				throw new CuentaBancariaException("No se puede extaer en negativo"); }
 			
-			this.monto-=monto;
-			
-		}
-		else
-		{
-			/*si el monto es menor  a  el saldo y  los descubiertos son iguales entonces significa que voy a restar del saldo  una porcion*/
-			
-			
-			this.diferencia=this.adicional*monto;
-			this.deuda=monto-this.monto;
-			this.monto=0.0;
-			this.descubiertoTotal-=this.deuda;
-			this.descubiertoTotal-=this.diferencia;
-			
-		}	
-		
-		
-		
-	}
-	else//se resta adicional tambien
-	{
-		if((monto*this.adicional)+monto>this.descubiertoTotal)	
-		{
-			
-			
-			throw new CuentaBancariaException("no se puede descontar dinero ");
-			
-			
-		}
-		else
-		{
-			
-			this.descubiertoTotal-=88.0/*((monto*this.adicional)+monto)*/;
-			
-			
-			
-		}	
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	}
-		
-		
-		/*aca empieza el extraer viejo
-		if(this.monto>monto )
-		{
-			this.monto-=monto;
-			
-		}
-		
-		else
-		{
-			
-			
-		this.diferenciaMonto=monto-this.monto;
-		this.monto=0.0;
-		this.deuda=this.diferenciaMonto*this.adicional;
-		this.descubiertoTotal-=this.deuda;
-			
-			
+			if (this.monto < monto) {
+				
+				this.deuda = monto - this.monto;
+				this.monto = 0.0;
+				this.deuda += this.deuda * this.adicional;
+				if (this.deuda > this.descubiertoTotal) {
+					throw new CuentaBancariaException("No hay suficiente saldo para la extraccion"); }
+				else {
+					this.descubiertoTotal -= this.deuda;	}
 			}
+			else {
+				this.monto -= monto; 
+				
+				
+				
+			}
+		
 	}
-	
-aca termina el extraer viejo	*/
 	
 	/**
 	 * Permite saber el saldo de la cuenta
