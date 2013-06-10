@@ -47,7 +47,7 @@ public class CajaAhorros extends AbstractCuenta{
 	 */
 	public void extraer(final Double monto) {
 		
-		if(monto<=0.0 || this.monto<monto)
+		if(monto<=0.0 || this.monto<=monto)
 		{
 			
 			throw new CuentaBancariaException("No se puede extraer saldo negativo");	
@@ -58,14 +58,17 @@ public class CajaAhorros extends AbstractCuenta{
 		this.cant_extracciones++;
 		
 		
-	if(this.cant_extracciones>=5)
+	if(this.cant_extracciones<=5)
 	{
-	this.monto=this.monto-monto;
-	this.monto-=this.adicional;
+
+		this.monto-=monto;	
 	}
 	else
 	{
-	this.monto-=monto;	
+		
+		this.monto=this.monto-monto;
+		this.monto-=this.adicional;	
+		
 		
 	}
 	

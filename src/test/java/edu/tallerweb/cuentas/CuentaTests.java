@@ -41,10 +41,34 @@ public class CuentaTests {
 		cuenta.extraer(100.0);
 
 		Assert.assertEquals(
-				"al extraer $ 600.0 de una cuenta con $ 4000.0 se obtienen $ 3.0",
+				"al extraer $ 600.0 de una cuenta con $ 4000.0 se obtienen $ 3394.0",
 				3394.0, cuenta.getSaldo(), 0.0);
 	}
+	@Test(expected = CuentaBancariaException.class)
 
+	public void queAlExtraerMasDeCincoVecesCobraRecargoYNoPuedeExtraerSiLlegaAlLimite() {
+		CajaAhorros cuenta = new CajaAhorros();
+		cuenta.depositar(4000.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+
+
+		
+		cuenta.extraer(3394.0);
+		
+		
+	}
+
+	
+	
+	
+	
+	
+	
 	@Test(expected = CuentaBancariaException.class)
 	public void queNoSePuedaRetirarDeLaCajaDeAhorrosSiNoTengoSaldo() {
 
