@@ -143,24 +143,17 @@ public class CuentaTests {
 				89.5, cuenta.getDescubierto(), 0.0);
 
 	}
-	
+
 	@Test
 	public void queLuegoDeExtraerEnDescubiertoAlDepositarMenosDelDescubiertoRestauraDescubiertoParcialmente() {
 		CuentaCorriente cuenta = new CuentaCorriente(400.0);
-		
+
 		cuenta.extraer(100.0);
 		cuenta.depositar(4.0);
 
 		Assert.assertEquals(
 				"si mi descubierto es de 100 y luego retiro 10,se restaran 15 al descubierto,y al depositar 10 tendre 95",
-				299.0, cuenta.getDescubierto(), 0.0); 
+				299.0, cuenta.getDescubierto(), 0.0);
 
-
-	
-
-
+	}
 }
-}
-	
-	
-	

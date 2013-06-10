@@ -7,15 +7,14 @@ package edu.tallerweb.cuentas;
 public class CajaAhorros extends AbstractCuenta {
 
 	/**
-	 * No hay reglas adicionales para el depósito
-	 * 
+	 * No hay reglas adicionales para el depósito 
 	 * @param monto
-	 *            a depositar
+	 * a depositar
 	 */
 
 	private Double monto = 0.0;
-	private Integer cant_extracciones = 0;
-	private Double adicional = 6.0;
+	private Integer cantidaExtracciones = 0;
+	private final  Double adicional = 6.0;
 
 	public void depositar(final Double monto) {
 
@@ -33,9 +32,8 @@ public class CajaAhorros extends AbstractCuenta {
 
 	/**
 	 * Se cobran $6 adicionales por cada extracción luego de la quinta.
-	 * 
 	 * @param monto
-	 *            a extraer
+	 * a extraer
 	 */
 	public void extraer(final Double monto) {
 
@@ -46,10 +44,10 @@ public class CajaAhorros extends AbstractCuenta {
 		}
 
 		else {
-			this.cant_extracciones++;
+			this.cantidaExtracciones++;
 		}
 
-		if (this.cant_extracciones <= 5) {
+		if (this.cantidaExtracciones <= 5) {
 
 			this.monto -= monto;
 		} else {
@@ -63,14 +61,12 @@ public class CajaAhorros extends AbstractCuenta {
 
 	/**
 	 * Permite saber el saldo de la cuenta
-	 * 
 	 * @return el saldo de la cuenta
 	 */
 	public Double getSaldo() {
 
 		return this.monto;
 
-		// throw new RuntimeException("No implementado aún");
 	}
 
 }
