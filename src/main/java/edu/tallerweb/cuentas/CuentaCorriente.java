@@ -50,25 +50,30 @@ public class CuentaCorriente extends AbstractCuenta {
 	 */
 	public void depositar(final Double monto) {
 
+		if (monto < 0.0) {
+			throw new CuentaBancariaException(
+					"No se puede depositar monto negativo");}
+		
+		
 		if (this.descubiertoTotal == this.descubiertoFijo) {
-			if (monto < 0.0) {
-				throw new CuentaBancariaException(
-						"No se puede depositar monto negativo");
+			
 
-			} else {
+		
 
 				this.monto += monto;
 
 			}
 
-		} else {
+		 else {
 			if (this.deuda < monto) {
 
-				this.diferenciaDescubierto = this.descubiertoFijo
-						- this.descubiertoTotal;
+			
 				this.descubiertoTotal += this.deuda;
-				this.monto = monto - this.diferenciaDescubierto;
+				this.monto+= monto - this.deuda;
 				this.deuda = 0.0;
+			}else
+			{
+				this.descubiertoTotal+=monto;
 			}
 
 		}
