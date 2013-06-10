@@ -58,12 +58,26 @@ public class CuentaTests {
 
 
 		
-		cuenta.extraer(3390.0);
+		cuenta.extraer(3394.0);
 		
 		
 	}
 
-	
+	@Test
+	public void queAlExtraerMasDeCincoVecesCobraRecargo() {
+
+		CajaAhorros cuenta = new CajaAhorros();
+		cuenta.depositar(1000.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		cuenta.extraer(100.0);
+		Assert.assertEquals("si  deposito  1000 pesos,y extraigo 6 veces 100  de saldo ",
+				394.0, cuenta.getSaldo(), 0.0);
+
+	}
 	
 	
 	

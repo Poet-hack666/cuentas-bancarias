@@ -32,10 +32,10 @@ public class CajaAhorros extends AbstractCuenta{
 			
 		}
 		
-		
+		else{	
 
 	this.monto=this.monto+monto;
-	
+		}
 	
 	
 	}
@@ -54,9 +54,10 @@ public class CajaAhorros extends AbstractCuenta{
 			
 		}
 		
-	
+		else
+		{
 		this.cant_extracciones++;
-		
+		}
 		
 	if(this.cant_extracciones<=5)
 	{
