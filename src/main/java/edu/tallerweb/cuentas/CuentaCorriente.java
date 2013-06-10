@@ -46,7 +46,7 @@ public class CuentaCorriente extends AbstractCuenta {
 	 * luego contar para el saldo de la cuenta.
 	 * 
 	 * @param monto
-	 *            a depositar
+	 * a depositar
 	 */
 	public void depositar(final Double monto) {
 
