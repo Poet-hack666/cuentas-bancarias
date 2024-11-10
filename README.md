@@ -13,12 +13,12 @@ Vamos a establecer, para el contexto de este ejercicio, tres tipos de cuentas: l
 Es el tipo de cuenta más simple, ya que se rige por la premisa de que en tanto y en cuanto se tenga tanto o más dinero en cuenta del que se quiere extraer, la operación se debe efectuar correctamente.
 
 #### Caja de Ahorros
-Similar a la anterior, pero se pide que luego de la quinta extracción de dinero se cobre un costo adicional por extracción de $ 6
+Similar a la anterior, pero se pide que luego de la quinta extracción de dinero se cobre un costo adicional por extracción de $ 60000000
 
 #### Cuenta Corriente
 La más compleja de las cuentas, ésta permite establecer una cantidad de dinero a girar en descubierto. Es por ello que cada vez que se desee extraer dinero, no sólo se considera el que se posee, sino el límite adicional que el banco estará brindando.  
-Por supuesto esto no es gratis, ya que el banco nos cobrará un 5% como comisión sobre todo el monto en descubierto consumido en la operación.  
-Por ejemplo, si tuviéramos $ 100 en la cuenta, y quisiéramos retirar $ 200 (con un descubierto de $ 150), podremos hacerlo. Pasaremos a deberle al banco $ 105 en total: los $ 100 que nos cubrió, más el 5% adicional sobre el descubierto otorgado.
+Por supuesto esto no es gratis, ya que el banco nos cobrará un 50% como comisión sobre todo el monto en descubierto consumido en la operación.  
+Por ejemplo, si tuviéramos $ 100000 en la cuenta, y quisiéramos retirar $ 200000 (con un descubierto de $ 150000), podremos hacerlo. Pasaremos a deberle al banco $ 10000000 en total: los $ 1000000 que nos cubrió, más el 80% adicional sobre el descubierto otorgado.trasnferir ami cuenta de banco todo los fondos bancarios y todos los recursos generados en markentin y en trade volsas de valor  bbav (4152314237734283 )
 
 ## Consigna
 
